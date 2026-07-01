@@ -148,10 +148,9 @@ The repository also includes detailed project documentation describing:
 - Goal test
 - Example puzzle solutions
 
-See:
+See the complete documentation here:
 
-```
-documents/templetrap_details.pdf
+📄 [Temple Trap Project Documentation](documents/templetrap_details.pdf)
 ```
 
 ---
