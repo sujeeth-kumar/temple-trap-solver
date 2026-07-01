@@ -1,10 +1,10 @@
-# Temple Trap Solver
+# 🏛️ Temple Trap Solver
 
-An interactive Python implementation of the **Temple Trap** sliding-block puzzle featuring an optimal **A\* Search** solver and a **Pygame-based GUI**. Players can solve puzzles manually, request optimal hints, or watch the algorithm automatically solve each level.
+An interactive Python implementation of the **Temple Trap** sliding-block puzzle featuring an optimal **A\* Search** solver and a **Pygame-based GUI**. Players can solve puzzles manually, request optimal hints, or watch the algorithm automatically compute and replay the shortest solution.
 
 ---
 
-## Screenshots
+## 📸 Screenshots
 
 ### Level Selection
 
@@ -20,21 +20,60 @@ An interactive Python implementation of the **Temple Trap** sliding-block puzzle
 
 ---
 
-## Features
+## 🎯 What is Temple Trap?
+
+Temple Trap is a **3 × 3 sliding-block puzzle** where the objective is to guide an explorer out of an ancient temple by strategically **sliding tiles** and **moving the pawn** through connected pathways.
+
+Unlike a traditional sliding puzzle, Temple Trap introduces several unique mechanics:
+
+- Two movement layers (**Ground** and **Top**)
+- Stair tiles that allow movement between floors
+- Rotatable pathway tiles with different connectivity
+- A lock rule that prevents sliding the tile currently occupied by the pawn
+
+The challenge is to determine the **minimum-cost sequence** of tile slides and pawn movements required to reach the exit.
+
+---
+
+## 🎮 Game Mechanics
+
+Each move consists of one of two actions.
+
+### Slide
+
+Move an adjacent tile into the empty position.
+
+- Cost = 1
+- The pawn's current tile cannot be moved (Lock Rule).
+
+### Walk
+
+Move the pawn across connected pathways.
+
+- Cost = 1 per movement
+- Movement is only allowed through connected tile openings.
+- Stair tiles allow movement between the Ground and Top floors.
+- The blank cell cannot be entered.
+
+The puzzle is solved when the pawn reaches the exit on the left side of the board.
+
+---
+
+## ✨ Features
 
 - Interactive Pygame graphical interface
-- Optimal A* Search algorithm
+- A* Search algorithm for optimal solutions
 - Manual puzzle solving
 - Hint generation based on the optimal solution
 - Auto-solve animation
 - Multiple difficulty levels (Starter, Junior, Expert)
 - Real-time move counter with optimal solution comparison
-- Level selection menu
+- Interactive level selection menu
 - Restart and replay support
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 - Python 3
 - Pygame
@@ -43,7 +82,7 @@ An interactive Python implementation of the **Temple Trap** sliding-block puzzle
 
 ---
 
-## Installation
+## 🚀 Installation
 
 Clone the repository:
 
@@ -72,7 +111,7 @@ python main.py junior-2
 
 ---
 
-## Controls
+## ⌨️ Controls
 
 | Action | Control |
 |---------|---------|
@@ -86,28 +125,31 @@ python main.py junior-2
 
 ---
 
-## Search Algorithm
+## 🔍 Search Algorithm
 
-The puzzle is formulated as a state-space search problem and solved using the **A\*** search algorithm.
+The puzzle is modeled as a **state-space search problem** and solved using the **A\*** Search algorithm.
 
-Each state consists of:
+Each search state consists of:
 
 - Current board configuration
 - Tile orientations
 - Pawn position
 - Current floor (Ground / Top)
 
-Possible actions include:
+The solver generates every valid slide and walk action from the current state and explores the state space using:
 
-- Sliding adjacent tiles
-- Walking across connected paths
-- Transitioning between floors using stair tiles
+**f(n) = g(n) + h(n)**
 
-The A* heuristic efficiently guides the search toward the exit while ensuring an optimal solution.
+where:
+
+- **g(n)** is the total cost accumulated so far.
+- **h(n)** estimates the remaining cost to reach the exit.
+
+Using an admissible heuristic allows A* to efficiently compute an **optimal solution** while minimizing unnecessary exploration.
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```text
 temple-trap-solver/
@@ -136,37 +178,35 @@ temple-trap-solver/
 
 ---
 
-## Documentation
+## 📄 Documentation
 
-The repository also includes detailed project documentation describing:
+The repository includes a detailed project report describing:
 
-- Problem formulation
+- Puzzle formulation
 - State-space representation
 - Action space
-- Puzzle rules
+- Movement rules
 - Cost function
-- Goal test
+- Goal state
 - Example puzzle solutions
 
-See the complete documentation here:
-
-📄 [Temple Trap Project Documentation](documents/templetrap_details.pdf)
-```
+📄 **[Temple Trap Project Documentation](documents/templetrap_details.pdf)**
 
 ---
 
-## Future Improvements
+## 🚀 Future Improvements
 
 - Support additional search algorithms (IDA*, Bidirectional Search)
 - Random puzzle generation
 - Custom level editor
 - Performance benchmarking
 - Undo/Redo functionality
+- Save and load game progress
 
 ---
 
-## Author
+## 👨‍💻 Author
 
 **Sujeeth Kumar**
 
-Introduction to Artificial Intelligence coursework project.
+Developed as part of the *Introduction to Artificial Intelligence* coursework.
